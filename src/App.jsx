@@ -5,6 +5,7 @@ import {
 	asyncDecrementCreator,
 	asyncIncrementCreator,
 } from './store/countReducer';
+import { fetchUsers } from './store/userReducer';
 
 function App() {
 	const dispatch = useDispatch();
@@ -21,11 +22,14 @@ function App() {
 				<button onClick={() => dispatch(asyncDecrementCreator())}>
 					DECREMENT
 				</button>
-				<button>Получить юзеров</button>
+				<button onClick={() => dispatch(fetchUsers())}>
+					Получить юзеров
+				</button>
 			</div>
 			<div>
 				{users.map((user) => (
 					<div
+						key={user.id}
 						style={{
 							fontSize: '2rem',
 							padding: '10px',
